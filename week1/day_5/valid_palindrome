@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int st=0,end=s.size()-1;
+        char l,r;
+        while(st<=end){
+        while(st < end && (s[st] > 122 || s[st] < 48 || 
+                  (s[st] > 57 && s[st] < 65) || 
+                  (s[st] > 90 && s[st] < 97))){
+            st++;
+        }
+        while(st < end && (s[end] > 122 || s[end] < 48 || 
+                  (s[end] > 57 && s[end] < 65) || 
+                  (s[end] > 90 && s[end] < 97))){
+            end--;
+        }
+        if(s[st]<=90&&s[st]>=65){
+         l=s[st];
+            l=l-'A'+'a';
+        }
+        else{
+            l=s[st];
+        }
+        if(s[end]<=90&&s[end]>=65){
+            r=s[end];
+            r=r-'A'+'a';
+        }
+        else{
+       r=s[end];
+        }
+        st++;
+        end--;
+        if(l!=r){
+            return false;
+        }
+        }
+        return true;
+    }
+};
