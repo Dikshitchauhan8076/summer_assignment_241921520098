@@ -1,0 +1,149 @@
+Q1. Create an interface `LibraryUser` with the following methods declared.
+
+```java
+interface LibraryUser {
+    void registerAccount();
+    void requestBook();
+}
+```
+
+---
+
+Q2. Create a class `KidUser` that implements the `LibraryUser` interface and contains the instance variables:
+
+* int age
+* String bookType
+
+```java
+class KidUser implements LibraryUser {
+    int age;
+    String bookType;
+
+    @Override
+    public void registerAccount() {
+        if (age < 12) {
+            System.out.println("You have successfully registered under a Kids Account");
+        } else {
+            System.out.println("Sorry, Age must be less than 12 to register as a kid");
+        }
+    }
+
+    @Override
+    public void requestBook() {
+        if (bookType.equalsIgnoreCase("Kids")) {
+            System.out.println("Book Issued successfully, please return the book within 10 days");
+        } else {
+            System.out.println("Oops, you are allowed to take only kids books");
+        }
+    }
+}
+```
+
+---
+
+Q3. Create a class `AdultUser` that implements the `LibraryUser` interface and contains the instance variables:
+
+* int age
+* String bookType
+
+```java
+class AdultUser implements LibraryUser {
+    int age;
+    String bookType;
+
+    @Override
+    public void registerAccount() {
+        if (age > 12) {
+            System.out.println("You have successfully registered under an Adult Account");
+        } else {
+            System.out.println("Sorry, Age must be greater than 12 to register as an adult");
+        }
+    }
+
+    @Override
+    public void requestBook() {
+        if (bookType.equalsIgnoreCase("Fiction")) {
+            System.out.println("Book Issued successfully, please return the book within 7 days");
+        } else {
+            System.out.println("Oops, you are allowed to take only adult Fiction books");
+        }
+    }
+}
+```
+
+---
+
+Q4. Create the `LibraryInterfaceDemo` class and perform Test Case #1 for `KidUser`.
+
+```java
+KidUser kid = new KidUser();
+
+kid.age = 10;
+kid.registerAccount();
+
+kid.age = 18;
+kid.registerAccount();
+
+kid.bookType = "Kids";
+kid.requestBook();
+
+kid.bookType = "Fiction";
+kid.requestBook();
+```
+
+---
+
+Q5. Perform Test Case #2 for `AdultUser` and write the complete main method.
+
+```java
+public class LibraryInterfaceDemo {
+    public static void main(String[] args) {
+
+        // Test Case #1
+        KidUser kid = new KidUser();
+
+        kid.age = 10;
+        kid.registerAccount();
+
+        kid.age = 18;
+        kid.registerAccount();
+
+        kid.bookType = "Kids";
+        kid.requestBook();
+
+        kid.bookType = "Fiction";
+        kid.requestBook();
+
+        System.out.println();
+
+        // Test Case #2
+        AdultUser adult = new AdultUser();
+
+        adult.age = 5;
+        adult.registerAccount();
+
+        adult.age = 23;
+        adult.registerAccount();
+
+        adult.bookType = "Kids";
+        adult.requestBook();
+
+        adult.bookType = "Fiction";
+        adult.requestBook();
+    }
+}
+```
+
+Expected Output:
+
+```text
+You have successfully registered under a Kids Account
+Sorry, Age must be less than 12 to register as a kid
+Book Issued successfully, please return the book within 10 days
+Oops, you are allowed to take only kids books
+
+Sorry, Age must be greater than 12 to register as an adult
+You have successfully registered under an Adult Account
+Oops, you are allowed to take only adult Fiction books
+Book Issued successfully, please return the book within 7 days
+```
